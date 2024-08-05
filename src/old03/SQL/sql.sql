@@ -5,3 +5,6 @@ values ('B' || lpad(seq_tb_book.nextval, 5, 0), ?, ?, ?, ?);
 
 select *
 from tb_book;
+
+select seq_tb_book.nextval
+from dual;

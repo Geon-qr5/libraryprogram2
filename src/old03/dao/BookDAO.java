@@ -30,10 +30,9 @@ public class BookDAO {
                 String book_no = rs.getString("book_no");
                 String title = rs.getString("title");
                 String author = rs.getString("author");
-                int price = rs.getInt("price");
                 String pub_no = rs.getString("pub_no");
 
-                BookDTO bookDTO = new BookDTO(book_no, title, author, price, pub_no);
+                BookDTO bookDTO = new BookDTO(book_no, title, author, pub_no);
                 list.add(bookDTO);
             }
         } catch (SQLException e) {
@@ -50,8 +49,7 @@ public class BookDAO {
     public int insertBook(BookDTO book) {
         int res = 0;
 
-        String sql = "insert into tb_book (book_no, title, author, price, pub_no) "
-        + "values ('B' || lpad(seq_tb_book.nextval, 5, 0), ?, ?, ?, ?)";
+        String sql = "insert into tb_book (book_no, title, author, pub_no) values ('B' || LPAD (SEQ_TB_BOOK.NEXTVAL, 5, 0) ,? ,? ,?)";
         try (
             Connection con = ConnectionUtil.getConnection();
             PreparedStatement pstmt = con.prepareStatement(sql);
@@ -59,8 +57,7 @@ public class BookDAO {
         ){
             pstmt.setString(1, book.getTitle());
             pstmt.setString(2, book.getAuthor());
-            pstmt.setInt(3, book.getPrice());
-            pstmt.setString(4, book.getPub_no());
+            pstmt.setString(3, book.getPub_no());
             
             System.out.println(sql);
 
