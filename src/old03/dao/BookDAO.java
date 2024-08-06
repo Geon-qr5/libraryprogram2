@@ -59,7 +59,9 @@ public class BookDAO {
             pstmt.setString(2, book.getAuthor());
             pstmt.setString(3, book.getPub_no());
             
-            System.out.println(sql);
+            System.out.println(book.getTitle());
+            System.out.println(book.getAuthor());
+            System.out.println(book.getPub_no());
 
         } catch (SQLException e) {
             System.out.println("SQL 오류");
