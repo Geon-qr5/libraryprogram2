@@ -63,7 +63,7 @@ public class BookDAO {
 
             res = pstmt.executeUpdate();
 
-            System.out.printf("%s : 도서가 등록되었습니다.", book.getTitle());
+            System.out.printf("%s : 도서가 등록되었습니다.\n", book.getTitle());
         } catch (SQLException e) {
             System.out.println("SQL 오류");
             e.printStackTrace();
