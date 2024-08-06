@@ -14,7 +14,7 @@ public class ConnectionUtil {
             Class.forName("oracle.jdbc.driver.OracleDriver");
             
             conn = DriverManager.getConnection(
-                    "jdbc:oracle:thin:@localhost:1521:orcl", "LIBRARY_PRACTICE", "1234");
+                    "jdbc:oracle:thin:@localhost:1521:orcl", "LIBRARYTEST", "1234");
 
         } catch (ClassNotFoundException e) {
             System.out.println("※주의※ 라의브러리 확인필요");

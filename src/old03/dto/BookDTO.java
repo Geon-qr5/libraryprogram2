@@ -15,11 +15,12 @@ public class BookDTO {
     /**
      * 도서정보
      */
-    public BookDTO (String book_no, String title, String author, String pub_no){
+    public BookDTO (String book_no, String title, String author, String pub_no, int price){
         this.book_no = book_no;
         this.title = title;
         this.author = author;
         this.pub_no = pub_no;
+        this.price = price;
     }
     
     @Override

@@ -27,7 +27,8 @@ public class Application {
         String title = scan.getString("도서 제목을 입력하세요.");
         String author = scan.getString("도서 작가를 입력하세요.");
         String pub_no = scan.getString("출판사 번호를 입력하세요.");
-        BookDTO book = new BookDTO("", title, author, pub_no);
+        int price = scan.getInt("도서 금액을 입력하세요.");
+        BookDTO book = new BookDTO("", title, author, pub_no, price);
         dao.insertBook(book);
 
     }

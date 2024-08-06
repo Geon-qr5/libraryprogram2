@@ -31,8 +31,9 @@ public class BookDAO {
                 String title = rs.getString("title");
                 String author = rs.getString("author");
                 String pub_no = rs.getString("pub_no");
+                int price = rs.getInt("price");
 
-                BookDTO bookDTO = new BookDTO(book_no, title, author, pub_no);
+                BookDTO bookDTO = new BookDTO(book_no, title, author, pub_no, price);
                 list.add(bookDTO);
             }
         } catch (SQLException e) {
@@ -49,26 +50,25 @@ public class BookDAO {
     public int insertBook(BookDTO book) {
         int res = 0;
 
-        String sql = "insert into tb_book (book_no, title, author, pub_no) values ('B' || LPAD (SEQ_TB_BOOK.NEXTVAL, 5, 0) ,? ,? ,?)";
+        String sql = "insert into tb_book (book_no, title, author, pub_no, price)"
+        + " values ('B' || LPAD (SEQ_TB_BOOK.NEXTVAL, 5, 0) ,? ,? ,?, ?)";
         try (
             Connection con = ConnectionUtil.getConnection();
             PreparedStatement pstmt = con.prepareStatement(sql);
-            ResultSet rs = pstmt.executeQuery();
         ){
             pstmt.setString(1, book.getTitle());
             pstmt.setString(2, book.getAuthor());
             pstmt.setString(3, book.getPub_no());
-            
-            System.out.println(book.getTitle());
-            System.out.println(book.getAuthor());
-            System.out.println(book.getPub_no());
+            pstmt.setInt(4, book.getPrice());
 
+            res = pstmt.executeUpdate();
+
+            System.out.printf("%s : 도서가 등록되었습니다.", book.getTitle());
         } catch (SQLException e) {
             System.out.println("SQL 오류");
             e.printStackTrace();
         }
 
-        System.out.printf("%s : 도서가 등록되었습니다.", book.getTitle());
 
         return res;
     }
