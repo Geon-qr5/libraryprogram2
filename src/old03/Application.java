@@ -21,7 +21,7 @@ public class Application {
     public void mainMenu() {
         while (true) {
             int menuSelect = -1;
-    
+
             System.out.println("================================");
             System.out.println("00도서관에 오신것을 환영합니다.");
             System.out.println("================================");
@@ -37,35 +37,35 @@ public class Application {
 
             switch (menuSelect) {
                 case 1:
-                // 도서 조회
-                System.out.println("~/~/~/~/~/~/~/~/~/~/~/~/~/~/~");
-                System.out.println("도서목록을 조회합니다.");
-                System.out.println("- - - - - - - - - - - - - - -");
-                bookList();
-                System.out.println("~/~/~/~/~/~/~/~/~/~/~/~/~/~/~");
+                    // 도서 조회
+                    System.out.println("~/~/~/~/~/~/~/~/~/~/~/~/~/~/~");
+                    System.out.println("도서목록을 조회합니다.");
+                    System.out.println("- - - - - - - - - - - - - - -");
+                    bookList();
+                    System.out.println("~/~/~/~/~/~/~/~/~/~/~/~/~/~/~");
                     break;
                 case 2:
-                // 도서 대여
+                    // 도서 대여
+                    rentBook();
 
                     break;
                 case 3:
-                // 도서 반납
-
+                    // 도서 반납
                     break;
                 case 4:
-                // 도서 추가
-                System.out.println("~/~/~/~/~/~/~/~/~/~/~/~/~/~/~");
-                System.out.println("도서를 추가합니다.");
-                System.out.println("- - - - - - - - - - - - - - -");
-                insertBook();
-                System.out.println("~/~/~/~/~/~/~/~/~/~/~/~/~/~/~");
+                    // 도서 추가
+                    System.out.println("~/~/~/~/~/~/~/~/~/~/~/~/~/~/~");
+                    System.out.println("도서를 추가합니다.");
+                    System.out.println("- - - - - - - - - - - - - - -");
+                    insertBook();
+                    System.out.println("~/~/~/~/~/~/~/~/~/~/~/~/~/~/~");
                     break;
                 case 5:
-                // 도서 삭제
+                    // 도서 삭제
 
                     break;
                 case 0:
-                // 프로그램 종료
+                    // 프로그램 종료
                     System.out.println("프로그램을 종료합니다.");
                     System.out.println("이용해주셔서 감사합니다.");
                     System.exit(-1);
@@ -98,5 +98,9 @@ public class Application {
         BookDTO book = new BookDTO("", title, author, pub_no, price);
         dao.insertBook(book);
 
+    }
+
+    public void rentBook() {
+        dao.rentBook(null);
     }
 }

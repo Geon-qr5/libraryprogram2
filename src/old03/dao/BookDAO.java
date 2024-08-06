@@ -11,7 +11,29 @@ import old03.common.ConnectionUtil;
 import old03.dto.BookDTO;
 
 public class BookDAO {
-    
+
+    /**
+     * 도서 대여
+     */
+    public int rentBook(BookDTO book) {
+        int res = 0;
+
+        String sql = "UPDATE TB_BOOK SET RENTYN = 'Y' WHERE TITLE = 'B00001'";
+
+        try (
+            Connection con = ConnectionUtil.getConnection();
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            ) {
+                res = pstmt.executeUpdate();
+
+                System.out.println("업데이트 완료!");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return res;
+    }
+
     /**
      * 도서목록 조회
      */
